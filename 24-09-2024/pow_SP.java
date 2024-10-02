@@ -23,7 +23,7 @@ public class pow_SP {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int p = sc.nextInt();
-        System.out.println(power(n, p));
+        System.out.println(Alternate.power(n, p));
         sc.close();
     }
 }
@@ -38,14 +38,9 @@ class Alternate {
             return x;
         else if (y == -1)
             return (float) 1 / x;
-        float res;
         int mid = (y / 2);
         float left = power(x, mid);
         float right = power(x, y - mid);
-        if (y > 0)
-            res = left * right;
-        else
-            res = left * right;// if y is -ve
-        return res;
+        return left*right;
     }
 }
