@@ -19,7 +19,6 @@
 // ---------------
 // Line-1: Return true if the input number is a happy number, otherwise return false.
 
-
 // Sample Input-1: 
 // ----------------
 // 19
@@ -35,7 +34,6 @@
 // 6² + 8² = 36 + 64 = 100
 // 1² + 0² + 0² = 1 (since the number reached 1, 19 is a happy number)
 
-
 // Sample Input-2: 
 // ----------------
 // 2
@@ -47,30 +45,29 @@
 // Explanation:
 // The process does not reach 1 and starts repeating numbers. Hence, 2 is not a happy number.
 
-import java.util.*; 
+import java.util.*;
 
 public class HappyNumber {
-    static public boolean isHappy(int n,ArrayList<Integer> arr){
-        if(n==1){
+    static public boolean isHappy(int n) {
+        if (n == 1 || n == 7) {
             return true;
         }
         int sum = 0;
-        while(n>0){
-            sum += (n%10)*(n%10);
-            n = n/10;
+        while (n > 0) {
+            sum += (n % 10) * (n % 10);
+            n /= 10;
         }
-        if(arr.contains(sum)){
-            return false;
+        if (sum < 10) {
+            return sum == 1 || sum == 7;
         }
-        arr.add(sum);
-        return isHappy(sum,arr);
-        
+        return isHappy(sum);
+
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        ArrayList<Integer> arr = new ArrayList<>();
-        System.out.println(isHappy(n,arr));
+        System.out.println(isHappy(n));
         sc.close();
     }
 }
